@@ -1,0 +1,15 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "BetterAuthy",
+  "description": "Rails 8.0+ authentication engine with multi-scope support for multiple authenticatable models (users, accounts, admins)",
+  "folders": ["docs"],
+  "excludeFolders": ["spec", "coverage", "tmp", "log", "vendor"],
+  "excludeFiles": ["CHANGELOG.md", "CODE_OF_CONDUCT.md"],
+  "rules": [
+    "Always reset configuration in test before blocks with BetterAuthy.reset_configuration!",
+    "Use TDD: write test first, then implementation",
+    "Include ControllerHelpers in ApplicationController",
+    "Mount engine at /auth in routes",
+    "All authenticatable models need the required database columns"
+  ]
+}

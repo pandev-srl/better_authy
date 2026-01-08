@@ -16,6 +16,12 @@ bundle exec rspec spec/path/to_spec.rb:42   # Run specific line
 bundle exec rspec --format doc              # Verbose output
 ```
 
+### Linting
+```bash
+bundle exec rubocop                         # Run linter (rails-omakase style)
+bundle exec rubocop -a                      # Auto-fix offenses
+```
+
 ### Coverage
 SimpleCov is configured with 90% minimum coverage. Coverage report generates to `coverage/`.
 
@@ -31,6 +37,9 @@ SimpleCov is configured with 90% minimum coverage. Coverage report generates to 
 
 ### Controller Layer
 - **BetterAuthy::ControllerHelpers** - Dynamically generates per-scope helpers: `current_{scope}`, `{scope}_signed_in?`, `sign_in_{scope}`, `sign_out_{scope}`, `authenticate_{scope}!`
+
+### Routes (Dynamic)
+Routes are generated dynamically in `config/routes.rb` for each configured scope. For scope `:account`, generates paths like `/account/login`, `/account/signup`, `/account/password/new`.
 
 ### Cookie Security
 Cookies use `cookies.encrypted` with configurable options:
@@ -67,6 +76,7 @@ t.string :current_sign_in_ip, :last_sign_in_ip
 - Use `Class.new(ApplicationRecord)` + `stub_const` for dynamic test models
 - Use `travel`/`freeze_time` from ActiveSupport::TimeHelpers for time-dependent tests
 - Factories in `spec/factories/`
+- Dummy Rails app for integration tests: `spec/dummy/`
 
 ## Configuration Example
 ```ruby

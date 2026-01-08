@@ -3,3 +3,19 @@
 /log/*.log
 /pkg/
 /tmp/
+
+# Test artifacts
+/coverage/
+/spec/examples.txt
+/spec/dummy/db/*.sqlite3
+/spec/dummy/db/*.sqlite3-*
+/spec/dummy/log/
+/spec/dummy/tmp/
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store

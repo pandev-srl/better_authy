@@ -1,0 +1,48 @@
+en:
+  better_authy:
+    sessions:
+      title: "Sign In"
+      submit: "Sign In"
+      remember_me: "Remember me"
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+      invalid_credentials: "Invalid email or password."
+      unauthenticated: "You need to sign in to continue."
+      no_account: "Don't have an account?"
+      signup_link: "Sign up"
+      forgot_password: "Forgot password?"
+    registrations:
+      title: "Sign Up"
+      submit: "Create account"
+      errors_title: "Please correct the following errors:"
+      signed_up: "Welcome! You have signed up successfully."
+      has_account: "Already have an account?"
+      login_link: "Sign in"
+    attributes:
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+    placeholders:
+      email: "you@example.com"
+      password: "Enter your password"
+      password_confirmation: "Confirm your password"
+    hints:
+      password: "Minimum 8 characters"
+    passwords:
+      forgot_title: "Forgot Password"
+      forgot_instruction: "Enter your email address and we'll send you instructions to reset your password."
+      forgot_submit: "Send Reset Instructions"
+      remembered: "Remember your password?"
+      reset_title: "Reset Password"
+      reset_submit: "Reset Password"
+      send_instructions: "If your email address exists in our database, you will receive password reset instructions shortly."
+      updated: "Your password has been changed successfully. You can now sign in."
+      invalid_token: "The password reset link is invalid or has expired."
+      no_token: "No password reset token provided."
+      mailer:
+        subject: "Password Reset Instructions"
+        greeting: "Hello %{email}!"
+        instruction: "Someone has requested a link to change your password. You can do this through the link below."
+        action: "Change my password"
+        ignore: "If you didn't request this, please ignore this email."
+        expiration: "This link will expire in %{hours} hour(s)."

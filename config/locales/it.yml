@@ -1,0 +1,48 @@
+it:
+  better_authy:
+    sessions:
+      title: "Accedi"
+      submit: "Accedi"
+      remember_me: "Ricordami"
+      signed_in: "Accesso effettuato."
+      signed_out: "Disconnessione effettuata."
+      invalid_credentials: "Email o password non validi."
+      unauthenticated: "Devi effettuare l'accesso."
+      no_account: "Non hai un account?"
+      signup_link: "Registrati"
+      forgot_password: "Password dimenticata?"
+    registrations:
+      title: "Registrati"
+      submit: "Crea account"
+      errors_title: "Correggi i seguenti errori:"
+      signed_up: "Registrazione completata."
+      has_account: "Hai già un account?"
+      login_link: "Accedi"
+    attributes:
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Conferma password"
+    placeholders:
+      email: "tu@esempio.com"
+      password: "Inserisci la password"
+      password_confirmation: "Conferma la password"
+    hints:
+      password: "Minimo 8 caratteri"
+    passwords:
+      forgot_title: "Password dimenticata"
+      forgot_instruction: "Inserisci il tuo indirizzo email e ti invieremo le istruzioni per reimpostare la password."
+      forgot_submit: "Invia istruzioni"
+      remembered: "Ricordi la password?"
+      reset_title: "Reimposta password"
+      reset_submit: "Reimposta password"
+      send_instructions: "Se il tuo indirizzo email esiste nel nostro database, riceverai le istruzioni per reimpostare la password a breve."
+      updated: "La tua password e' stata modificata con successo. Ora puoi accedere."
+      invalid_token: "Il link per reimpostare la password non e' valido o e' scaduto."
+      no_token: "Token per reimpostare la password non fornito."
+      mailer:
+        subject: "Istruzioni per reimpostare la password"
+        greeting: "Ciao %{email}!"
+        instruction: "Qualcuno ha richiesto un link per cambiare la tua password. Puoi farlo tramite il link qui sotto."
+        action: "Cambia la mia password"
+        ignore: "Se non hai richiesto tu questa operazione, ignora questa email."
+        expiration: "Questo link scadra' tra %{hours} ora/e."

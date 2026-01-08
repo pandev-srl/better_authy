@@ -1,0 +1,61 @@
+<% content_for :title, t("better_authy.passwords.forgot_title") %>
+
+<div class="w-full max-w-md">
+  <% if flash[:alert].present? %>
+    <%= bui_action_messages([flash[:alert]],
+      variant: :danger,
+      style: :soft,
+      dismissible: true,
+      container_classes: "mb-6"
+    ) %>
+  <% end %>
+
+  <%= bui_card(
+    variant: :light,
+    style: :bordered,
+    size: :lg,
+    shadow: true
+  ) do |card| %>
+    <% card.with_header do %>
+      <h1 class="text-2xl font-bold text-center text-grayscale-900">
+        <%= t("better_authy.passwords.forgot_title") %>
+      </h1>
+    <% end %>
+
+    <% card.with_body do %>
+      <p class="text-sm text-grayscale-600 mb-6">
+        <%= t("better_authy.passwords.forgot_instruction") %>
+      </p>
+
+      <%= form_with model: @forgot_password_form, scope: :forgot_password, url: send(:"#{params[:scope]}_password_path"), builder: BetterUi::UiFormBuilder, class: "space-y-6" do |f| %>
+        <%= f.bui_text_input :email,
+          label: t("better_authy.attributes.email"),
+          placeholder: t("better_authy.placeholders.email"),
+          type: "email",
+          autocomplete: "email" %>
+
+        <div>
+          <%= bui_button(
+            variant: :primary,
+            style: :solid,
+            size: :lg,
+            type: :submit,
+            show_loader_on_click: true,
+            container_classes: "w-full"
+          ) do %>
+            <%= t("better_authy.passwords.forgot_submit") %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% card.with_footer do %>
+      <p class="text-center text-sm text-grayscale-600">
+        <%= t("better_authy.passwords.remembered") %>
+        <%= link_to t("better_authy.registrations.login_link"),
+                    send(:"#{params[:scope]}_login_path"),
+                    class: "font-medium text-primary-600 hover:text-primary-500" %>
+      </p>
+    <% end %>
+  <% end %>
+</div>

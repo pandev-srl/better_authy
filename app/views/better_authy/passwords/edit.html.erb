@@ -1,0 +1,55 @@
+<% content_for :title, t("better_authy.passwords.reset_title") %>
+
+<div class="w-full max-w-md">
+  <% if flash[:alert].present? %>
+    <%= bui_action_messages([flash[:alert]],
+      variant: :danger,
+      style: :soft,
+      dismissible: true,
+      container_classes: "mb-6"
+    ) %>
+  <% end %>
+
+  <%= bui_card(
+    variant: :light,
+    style: :bordered,
+    size: :lg,
+    shadow: true
+  ) do |card| %>
+    <% card.with_header do %>
+      <h1 class="text-2xl font-bold text-center text-grayscale-900">
+        <%= t("better_authy.passwords.reset_title") %>
+      </h1>
+    <% end %>
+
+    <% card.with_body do %>
+      <%= form_with model: @reset_password_form, scope: :reset_password, url: send(:"#{params[:scope]}_password_path"), method: :patch, builder: BetterUi::UiFormBuilder, class: "space-y-6" do |f| %>
+        <%= f.hidden_field :token %>
+
+        <%= f.bui_password_input :password,
+          label: t("better_authy.attributes.password"),
+          placeholder: t("better_authy.placeholders.password"),
+          hint: t("better_authy.hints.password"),
+          autocomplete: "new-password" %>
+
+        <%= f.bui_password_input :password_confirmation,
+          label: t("better_authy.attributes.password_confirmation"),
+          placeholder: t("better_authy.placeholders.password_confirmation"),
+          autocomplete: "new-password" %>
+
+        <div>
+          <%= bui_button(
+            variant: :primary,
+            style: :solid,
+            size: :lg,
+            type: :submit,
+            show_loader_on_click: true,
+            container_classes: "w-full"
+          ) do %>
+            <%= t("better_authy.passwords.reset_submit") %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

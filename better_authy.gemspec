@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "lib/better_authy/version"
 
 Gem::Specification.new do |spec|
@@ -5,22 +7,23 @@ Gem::Specification.new do |spec|
   spec.version     = BetterAuthy::VERSION
   spec.authors     = [ "Umberto Peserico" ]
   spec.email       = [ "umberto.peserico@pandev.it" ]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of BetterAuthy."
-  spec.description = "TODO: Description of BetterAuthy."
+  spec.homepage    = "https://github.com/pandev-srl/better_authy"
+  spec.summary     = "Authentication engine for Rails with multi-scope support"
+  spec.description = "A flexible authentication engine supporting multiple authenticatable models via scopes"
   spec.license     = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 8.1.1"
+  spec.required_ruby_version = ">= 3.2.0"
+
+  spec.add_dependency "rails", ">= 8.0"
+  spec.add_dependency "bcrypt", "~> 3.1"
+  spec.add_dependency "view_component", "~> 4.0"
+  spec.add_dependency "better_ui", "~> 0.7.1"
 end

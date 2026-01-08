@@ -1,0 +1,80 @@
+<% content_for :title, t("better_authy.sessions.title") %>
+
+<div class="w-full max-w-md">
+  <% if flash[:alert].present? %>
+    <%= bui_action_messages([flash[:alert]],
+      variant: :danger,
+      style: :soft,
+      dismissible: true,
+      container_classes: "mb-6"
+    ) %>
+  <% end %>
+
+  <% if flash[:notice].present? %>
+    <%= bui_action_messages([flash[:notice]],
+      variant: :success,
+      style: :soft,
+      dismissible: true,
+      container_classes: "mb-6"
+    ) %>
+  <% end %>
+
+  <%= bui_card(
+    variant: :light,
+    style: :bordered,
+    size: :lg,
+    shadow: true
+  ) do |card| %>
+    <% card.with_header do %>
+      <h1 class="text-2xl font-bold text-center text-grayscale-900">
+        <%= t("better_authy.sessions.title") %>
+      </h1>
+    <% end %>
+
+    <% card.with_body do %>
+      <%= form_with model: @session_form, scope: :session, url: request.path, builder: BetterUi::UiFormBuilder, class: "space-y-6" do |f| %>
+        <%= f.bui_text_input :email,
+          label: t("better_authy.attributes.email"),
+          placeholder: t("better_authy.placeholders.email"),
+          type: "email",
+          autocomplete: "email" %>
+
+        <%= f.bui_password_input :password,
+          label: t("better_authy.attributes.password"),
+          placeholder: t("better_authy.placeholders.password"),
+          autocomplete: "current-password" %>
+
+        <div class="flex items-center justify-between">
+          <%= f.bui_checkbox :remember_me,
+            label: t("better_authy.sessions.remember_me") %>
+
+          <%= link_to t("better_authy.sessions.forgot_password"),
+                      send(:"new_#{params[:scope]}_password_path"),
+                      class: "text-sm font-medium text-primary-600 hover:text-primary-500" %>
+        </div>
+
+        <div>
+          <%= bui_button(
+            variant: :primary,
+            style: :solid,
+            size: :lg,
+            type: :submit,
+            show_loader_on_click: true,
+            container_classes: "w-full"
+          ) do %>
+            <%= t("better_authy.sessions.submit") %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% card.with_footer do %>
+      <p class="text-center text-sm text-grayscale-600">
+        <%= t("better_authy.sessions.no_account") %>
+        <%= link_to t("better_authy.sessions.signup_link"),
+                    send(:"#{params[:scope]}_signup_path"),
+                    class: "font-medium text-primary-600 hover:text-primary-500" %>
+      </p>
+    <% end %>
+  <% end %>
+</div>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Better authy</title>
+  <title><%= content_for(:title) || "Authentication" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= yield :head %>
-
-  <%= stylesheet_link_tag    "better_authy/application", media: "all" %>
 </head>
-<body>
 
-<%= yield %>
-
+<body class="bg-grayscale-50 min-h-screen">
+  <div class="flex min-h-screen flex-col items-center justify-center px-4 py-12">
+    <%= yield %>
+  </div>
 </body>
 </html>

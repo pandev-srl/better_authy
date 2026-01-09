@@ -9,7 +9,7 @@
 ## Add to Gemfile
 
 ```ruby
-gem "better_authy", "~> 0.7"
+gem "better_authy", "~> 0.1.0"
 ```
 
 Then install:

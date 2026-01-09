@@ -15,7 +15,7 @@ A flexible authentication engine for Rails 8.0+ with multi-scope support. Enable
 ### 1. Add to Gemfile
 
 ```ruby
-gem "better_authy", "~> 0.7"
+gem "better_authy", "~> 0.1.0"
 ```
 
 ### 2. Configure scope

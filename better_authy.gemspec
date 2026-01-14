@@ -12,7 +12,6 @@ Gem::Specification.new do |spec|
   spec.description = "A flexible authentication engine supporting multiple authenticatable models via scopes"
   spec.license     = "MIT"
 
-  spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/main/CHANGELOG.md"
 
@@ -22,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 3.2.0"
 
-  spec.add_dependency "rails", ">= 8.0"
+  spec.add_dependency "rails", ">= 8.0", "< 8.2"
   spec.add_dependency "bcrypt", "~> 3.1"
   spec.add_dependency "view_component", "~> 4.0"
   spec.add_dependency "better_ui", "~> 0.7.1"

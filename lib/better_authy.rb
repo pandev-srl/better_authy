@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "bcrypt"
+require "better_ui"
 
 require "better_authy/version"
 require "better_authy/errors"

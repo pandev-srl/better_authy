@@ -3,6 +3,7 @@
 module BetterAuthy
   class BaseController < ::ApplicationController
     helper BetterAuthy::ApplicationHelper
+    helper_method :scope_config
 
     layout :resolve_layout
     protect_from_forgery with: :exception

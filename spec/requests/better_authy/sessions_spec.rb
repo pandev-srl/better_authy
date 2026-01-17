@@ -28,6 +28,28 @@ RSpec.describe "BetterAuthy::Sessions", type: :request do
       get "/auth/account/login"
       expect(response).to redirect_to("/")
     end
+
+    it "shows sign-up link when enable_sign_up is true (default)" do
+      get "/auth/account/login"
+      expect(response.body).to include("/auth/account/signup")
+    end
+
+    context "when enable_sign_up is false" do
+      before do
+        BetterAuthy.reset_configuration!
+        BetterAuthy.configure do |config|
+          config.scope :account do |scope|
+            scope.model_name = "Account"
+            scope.enable_sign_up = false
+          end
+        end
+      end
+
+      it "hides sign-up link" do
+        get "/auth/account/login"
+        expect(response.body).not_to include("/auth/account/signup")
+      end
+    end
   end
 
   describe "POST /auth/account/login" do

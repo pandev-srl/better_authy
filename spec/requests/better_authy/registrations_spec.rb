@@ -96,4 +96,40 @@ RSpec.describe "BetterAuthy::Registrations", type: :request do
       expect(Account.where(email: "existing@example.com").count).to eq(1)
     end
   end
+
+  context "when sign up is disabled" do
+    before do
+      BetterAuthy.reset_configuration!
+      BetterAuthy.configure do |config|
+        config.scope :account do |scope|
+          scope.model_name = "Account"
+          scope.enable_sign_up = false
+        end
+      end
+    end
+
+    describe "GET /auth/account/signup" do
+      it "returns 404" do
+        get "/auth/account/signup"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+
+    describe "POST /auth/account/signup" do
+      it "returns 404" do
+        post "/auth/account/signup", params: {
+          account: { email: "test@example.com", password: "password123", password_confirmation: "password123" }
+        }
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "does not create an account" do
+        expect {
+          post "/auth/account/signup", params: {
+            account: { email: "test@example.com", password: "password123", password_confirmation: "password123" }
+          }
+        }.not_to change(Account, :count)
+      end
+    end
+  end
 end

@@ -4,7 +4,8 @@ module BetterAuthy
   class ScopeConfiguration
     attr_reader :name
     attr_accessor :model_name, :session_key, :remember_cookie, :remember_for,
-                  :sign_in_path, :after_sign_in_path, :layout, :password_reset_within
+                  :sign_in_path, :after_sign_in_path, :layout, :password_reset_within,
+                  :enable_sign_up
 
     def initialize(name)
       @name = name.to_sym
@@ -15,6 +16,11 @@ module BetterAuthy
       @sign_in_path = "/auth/#{name}/login"
       @after_sign_in_path = "/"
       @layout = "better_authy/application"
+      @enable_sign_up = true
+    end
+
+    def sign_up_enabled?
+      @enable_sign_up
     end
 
     def model_class

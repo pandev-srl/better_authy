@@ -38,6 +38,10 @@ RSpec.describe BetterAuthy::ScopeConfiguration do
       expect(scope.password_reset_within).to eq(1.hour)
     end
 
+    it "sets default enable_sign_up to true" do
+      expect(scope.enable_sign_up).to eq(true)
+    end
+
     context "with different scope name" do
       subject(:scope) { described_class.new(:user) }
 
@@ -124,6 +128,24 @@ RSpec.describe BetterAuthy::ScopeConfiguration do
     it "allows overriding the password_reset_within duration" do
       scope.password_reset_within = 2.hours
       expect(scope.password_reset_within).to eq(2.hours)
+    end
+  end
+
+  describe "#enable_sign_up=" do
+    it "allows overriding to false" do
+      scope.enable_sign_up = false
+      expect(scope.enable_sign_up).to eq(false)
+    end
+  end
+
+  describe "#sign_up_enabled?" do
+    it "returns true by default" do
+      expect(scope.sign_up_enabled?).to eq(true)
+    end
+
+    it "returns false when disabled" do
+      scope.enable_sign_up = false
+      expect(scope.sign_up_enabled?).to eq(false)
     end
   end
 

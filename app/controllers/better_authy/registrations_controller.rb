@@ -2,6 +2,7 @@
 
 module BetterAuthy
   class RegistrationsController < BaseController
+    before_action :ensure_sign_up_enabled
     before_action :redirect_if_signed_in, only: %i[new create]
 
     def new
@@ -19,6 +20,12 @@ module BetterAuthy
     end
 
     private
+
+    def ensure_sign_up_enabled
+      return if scope_config.sign_up_enabled?
+
+      raise ActionController::RoutingError, "Not Found"
+    end
 
     def resource_params
       params.require(scope_name).permit(:email, :password, :password_confirmation)

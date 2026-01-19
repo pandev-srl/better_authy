@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    better_authy (0.1.0)
+    better_authy (0.2.0)
       bcrypt (~> 3.1)
       better_ui (~> 0.7.1)
       rails (>= 8.0, < 8.2)

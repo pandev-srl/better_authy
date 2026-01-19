@@ -25,6 +25,12 @@ bundle exec rubocop -a                      # Auto-fix offenses
 ### Coverage
 SimpleCov is configured with 90% minimum coverage. Coverage report generates to `coverage/`.
 
+### Build & Release
+```bash
+bundle exec rake build                      # Build gem
+bundle exec rake release                    # Release to RubyGems
+```
+
 ## Architecture
 
 ### Configuration Layer
@@ -83,6 +89,7 @@ t.string :current_sign_in_ip, :last_sign_in_ip
 BetterAuthy.configure do |config|
   config.scope :account do |scope|
     scope.model_name = "Account"            # Required
+    scope.enable_sign_up = false            # Optional, disable registration
     scope.remember_for = 1.month            # Optional override
     scope.sign_in_path = "/login"           # Optional override
   end

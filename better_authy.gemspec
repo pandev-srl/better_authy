@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 8.0", "< 8.2"
   spec.add_dependency "bcrypt", "~> 3.1"
   spec.add_dependency "view_component", "~> 4.0"
-  spec.add_dependency "better_ui", "~> 0.7.1"
+  spec.add_dependency "better_ui", ">= 0.7.1", "< 1"
 end

@@ -7,7 +7,7 @@ gemspec
 gem "sqlite3"
 
 # UI Components
-gem "view_component", "~> 4.1"
+gem "view_component", "~> 4.2"
 gem "tailwind_merge", "~> 0.12"
 
 # Omakase Ruby styling
